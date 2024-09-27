@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="generateBtn">가짜 더미 데이터 생성</button>
+    <div id="result">
+      <!-- js출력 -->
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#generateBtn").click(function () {
+          $.ajax({
+            url: "data2.json",
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+              let reseulDiv = $("#result");
+              // console.log(data);
+              // json데이터가 배열인 경우, 각각의 요소를 순회하여
+              // 이름과 이메일을 출력
+              if (Array.isArray(data)) {
+                // console.log(data);
+
+                let outPut = "";
+                console.log(outPut);
+
+                data.forEach(function (item, index) {
+                  // console.log(item);
+                  outPut += `<p> 이름: ${item.userData.name}   , 이메일: ${item.userData.email}  </p> `;
+                  // console.log(outPut);
+                });
+                reseulDiv.html(outPut);
+              } else {
+                // json이 객체 ({} 1개일때)
+                reseulDiv.html(`<p> 이름: ${item.userData.name}   , 이메일: ${item.userData.email}  </p>`);
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error(`데이터 상태 : ${status} , ${error}`);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

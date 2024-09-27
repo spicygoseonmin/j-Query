@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img {
+        vertical-align: middle;
+      }
+      label {
+        filter: brightness(0);
+        display: inline-block;
+        border: 3px solid #fff;
+        margin: 3px;
+        transition: all 0.3s;
+      }
+      input:checked + label {
+        filter: brightness(1);
+        border: 3px solid orange;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="wrap">
+        <input type="checkbox" id="sel${i}">
+        <label for="sel${i}"><img src="images/icon_portrait(${i}).png" alt="sel${i}"> </label>
+    </div> -->
+    <!-- <p>선택된 이미지</p>
+    <p id="selected"></p> -->
+    <script>
+      $(function () {
+        $("body").append(`<div class="wrap"></div>`);
+        //31개의 체크박스와 각각의 이미지를 wrap div에 추가
+        let i = 0;
+        while (i < 31) {
+          $(".wrap").append(`<input type="checkbox" id="sel${i}">
+        <label for="sel${i}"><img src="images/icon_portrait(${i}).png" alt="sel${i}"> </label>`);
+          i++;
+        }
+        // 각 input 요소의 변경을 감지하여 선택된 항목을 표시
+        $("body").append(`  <p>선택된 이미지</p> <p id="selected"></p>`);
+        // 체크박스를 안보이게 이동
+        $("input").css("position", "absolute").css("left", "-99999px");
+        $(".wrap > input").change(function () {
+          let selectedItems = [];
+          //    console.log(selectedItems);
+          $(".wrap > input:checked").each(function (item) {
+            // console.log(item);
+            selectedItems.push($(this).attr("id"))
+
+        });
+        // console.log(selectedItems);
+        // 배열을 문자열로 변환하여 출력
+        // selected선택 하고 text()
+        //   $("#selected").text(selectedItems)
+          $("#selected").text(selectedItems.join(" "))
+        //   $("#selected").text(selectedItems.join(" / "))
+        });
+
+        // ====================================
+      });
+    </script>
+  </body>
+</html>

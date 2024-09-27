@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      a{
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="special">다른 div 안에 있는 특별한 div</div>
+    </div>
+    <div></div>
+    <a href="https://www.example.com">예제 링크</a>
+    <a href="http://www.example.com">또 다른 링크</a>
+
+    <button id="apply-selectors">선택자 적용</button>
+
+    <script>
+      $(document).ready(function () {
+        $("#apply-selectors").click(function () {
+          // alert("확인");
+          $("div").find(".special").css("color", "red");
+          $("a[href^='https://']").css("color", "blue");
+          $('div:empty').css("border", "1px solid black")
+        });
+      });
+    </script>
+  </body>
+</html>

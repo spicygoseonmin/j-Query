@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트</title>
+    <script src="jquery-1.10.2.min.js"></script>
+  </head>
+  <body>
+    <p>
+      <button class="btn1">버튼 1</button>
+    </p>
+    <p>내용1</p>
+    <p>
+      <button class="btn2">버튼 2</button>
+    </p>
+    <p>내용2</p>
+    <script>
+      $(function () {
+        // 단독 이벤트
+        $(".btn1").click(function () {
+          $(".btn1").parent().next().css({ color: "#f00" });
+        });
+        // 그룹으로 이벤트 on()
+        $(".btn2").on({
+            "mouseover focus":function(){
+                // alert("mouseover focus")
+                $(".btn2").parent().next().css({color: "#0f0"})
+            },
+            "mouseout blur" :function(){
+                // alert("mouseout blur")
+                $(".btn2").parent().next().css({color: "#000"})
+            }
+        })
+
+      });
+    </script>
+  </body>
+</html>

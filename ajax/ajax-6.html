@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="btnGetData">데이터 가져오기</button>
+    <div id="result"></div>
+    <script>
+      $(document).ready(function () {
+        $("#btnGetData").click(function () {
+          $.get("data1.txt", function (data) {
+            // console.log(data);
+            $("#result").html(data);
+          }).fail(function (xhr, status, error) {
+            // 요청 실패 시 실행할 코드
+            //  console.log(status);
+            console.error(`데이터를 가져오는데 실패했습니다.`);
+            console.error(`XHR객체 : ${status}`);
+            //  200 (성공), 404 (찾을 수 없음), 500 (서버 오류) 등.
+            console.error(`HTTP : ${xhr.status}`);
+            console.error(`상태 텍스트 : ${xhr.statusText}`);
+            console.error(`응답 텍스트 : ${xhr.responseText}`);
+            console.error(`에러 상태 : ${status}`);
+            console.error(`에러 내용: ${error}`);
+            $("#result").html(`에러 상태 : ${status} 데이터를 가져오는데 실패 했습니다. 오류 확인하세요.`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      body {
+        font: 14px "Malgun Gothic", "맑은고딕", sans-serif;
+        color: #555;
+      }
+     
+    </style>
+    <script>
+      $(function () {
+     $("#startDate").datepicker({
+      minDate: +1,
+      maxDate: "+1M",
+      onSelect:function(dateText){
+        // console.log(dateText);
+        $("#selectedDate").text(dateText)
+        
+
+      }
+     })
+     $("#addTaskBtn").on("click",function(){
+      // const taskText = $("#taskInput").val()
+      const taskText = $("#taskInput").val().trim()
+      // console.log(taskText);
+      if(taskText !== ""){
+        const listItem = $("<li>").text(taskText)
+          // $("#taskList").append(listItem)
+          $("#taskList").prepend(listItem)
+          $("#taskInput").val("")
+          
+      }
+     })
+    //  모두 삭제
+    $("#clearTaskBtn").on("click" , function(){
+      $("#taskList").empty()
+    })
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+          <p>
+              <label for="startDate">날짜선택</label>
+              <input type="text" name="startDate" id="startDate">
+          </p>
+          <p><strong>선택된 날짜:</strong> <span id="selectedDate"></span></p>
+      </div>
+      <div>
+          <p>
+              <label for="taskInput">할 일 추가</label>
+              <input type="text" name="taskInput" id="taskInput">
+              <button id="addTaskBtn">추가</button>
+              <button id="clearTaskBtn">모두 지우기</button>
+          </p>
+          <ul id="taskList"></ul>
+      </div>
+  </div>
+  </body>
+</html>

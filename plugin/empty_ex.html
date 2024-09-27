@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      body {
+        font: 14px "Malgun Gothic", "맑은고딕", sans-serif;
+        color: #555;
+      }
+      #productGallery img {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        cursor: pointer;
+        border: 2px solid #ddd;
+      }
+      #productGallery img:hover {
+        border-color: #333;
+      }
+      #productDc {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        width: 300px;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>제품 갤러리</h1>
+    <div id="productGallery">
+      <img src="images/pic_1.jpg" alt="제품 1" data-description="제품 1은 최신 기술을 사용하여 제작되었습니다." />
+      <img src="images/pic_2.jpg" alt="제품 2" data-description="제품 2는 사용자의 편의를 고려하여 디자인되었습니다." />
+      <img src="images/pic_3.jpg" alt="제품 3" data-description="제품 3은 고급스러운 재질로 만들어졌습니다." />
+    </div>
+    <div id="productDc">여기에 제품 설명이 나타납니다.</div>
+    <script>
+      $(function () {
+        $("#productGallery img").on("click", function () {
+          const dataDc = $(this).data("description");
+          const imgeSrc = $(this).attr("src");
+          const imgeAlt = $(this).attr("alt")
+
+          // console.log(dataDc);
+          // 기존 설명 지우기empty()
+          $("#productDc").empty();
+          // $("#productDc").text(dataDc)
+          // 이미지랑 설명 추가
+          const content = `
+            <img src="${imgeSrc}" alt="${imgeAlt}">
+            <p>${dataDc}</p>
+          `;
+          console.log(content);
+          // $("#productDc")에 html() content 연결
+          $("#productDc").html(content)
+          
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AJAX JSON 문제 예제</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<button id="btnGetJSON">인물 정보 가져오기</button>
+<div id="result"></div>
+
+<script>
+$(document).ready(function() {
+  $("#btnGetJSON").click(function() {
+    $.ajax({
+      url: "testData.json",  // JSON 파일 경로
+      method: "GET",     // GET 요청 방식
+      dataType: "json",  // 응답 데이터 타입
+      success: function(data) {
+        $("#result").empty(); // 이전 결과 지우기
+        data.forEach(function(person) {
+          var personInfo = `
+            <div class="person">
+              <h3>${person.name}</h3>
+              <img src="${person.image}" alt="${person.name}" style="width: 100px; height: auto;">
+              <p>Personality: ${person.personality}</p>
+            </div>
+          `;
+          $("#result").append(personInfo);
+        });
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.error("Error:", textStatus, errorThrown);
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

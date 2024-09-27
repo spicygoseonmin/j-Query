@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <p>이것은 문단입니다.</p>
+    <p class="active">이것은 활성화된 문단입니다.</p>
+    <div id="header">헤더 섹션</div>
+    <button id="apply-selectors">선택자 적용</button>
+    <script>
+      $(document).ready(function () {
+        $("#apply-selectors").click(function () {
+          // alert("선택")
+          $("p").css("color", "red");
+          $("#header").css("background-color" , "blue")
+          $(".active").css("font-size" , "30px")
+        });
+      });
+    </script>
+  </body>
+</html>

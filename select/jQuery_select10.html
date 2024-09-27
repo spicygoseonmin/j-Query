@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자</title>
+    <script src="jquery-1.10.2.min.js"></script>
+  </head>
+  <body>
+    <h1 class="title">선택자</h1>
+    <div>
+      <p class="txt2">내용</p>
+    </div>
+    <div>
+      <div>
+        <p class="txt1">내용</p>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        // 변수에 스타일을 적용
+        const style_1 = {
+          // "background-color": "#f0f",
+          border: "2px solid #f00",
+          color: "#f0f",
+        };
+        const style_2 = {
+          "background-color": "#ff0",
+          border: "2px dashed #f00",
+          "font-size": "20px",
+        };
+        $(".txt1").closest("div").css(style_2);
+      });
+    </script>
+  </body>
+</html>

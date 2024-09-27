@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      .focused {
+        border: 2px solid #007bff;
+        outline: none;
+        border-radius: 2px;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <form id="signupForm">
+      <p>
+        <label for="user_id">사용자 ID</label>
+        <input type="text" name="user_id" id="user_id" />
+        <!-- 에러메세지 -->
+        <span class="error"></span>
+      </p>
+      <p>
+        <label for="user_pw">비밀번호</label>
+        <input type="password" name="user_pw" id="user_pw" />
+        <!-- 에러메세지 -->
+        <span class="error"></span>
+      </p>
+      <p>
+        <label for="confirm_pw">비밀번호 확인</label>
+        <input type="password" name="confirm_pw" id="confirm_pw" />
+        <!-- 에러메세지 -->
+        <span class="error"></span>
+      </p>
+      <button type="submit">회원가입</button>
+    </form>
+    <script>
+      $(function () {
+        // ID, PW 입력 필드에 포커스가 들어갈 때 테두리 강조
+        $("#user_id, #user_pw, #confirm_pw").on("focus", function () {
+          $(this).addClass("focused");
+        });
+        // ID, PW 입력 필드에서 포커스가 빠져나올 때 테두리 강조 제거
+        // $("#user_id, #user_pw, #confirm_pw").on("blur", function () {
+        //   $(this).removeClass("focused");
+        // });
+        // 정규표현식을 사용한 유효성 검사 패턴
+        // 영문자와 숫자로만 이루어진 4~12자
+        const idPattern = /^[a-zA-Z0-9]{4,12}$/;
+        // 영문자와 숫자의 조합으로 6~12자
+        const pwPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,12}$/;
+        // id ,pw입력 필드에서 포커스가 빠져나올때 유효성 검사 및 테두리 강조 제거
+        $("#user_id").on("blur", function () {
+          const userId_B = $(this).val();
+          // console.log(userId_B);
+          if (userId_B === "") {
+            $(this).next(".error").text("사용자 ID를 입력하세요.");
+          } else if (!idPattern.test(userId_B)) {
+            $(this).next(".error").text("사용자 ID는 영문자와 숫자로만 이루어진 4~12자여야 합니다.");
+          } else {
+            $(this).next(".error").text("");
+          }
+          $(this).removeClass("focused");
+        });
+        $("#user_pw").on("blur", function () {
+          const password_B = $(this).val();
+          if (password_B === "") {
+            $(this).next(".error").text("비밀번호를 입력하세요.");
+          } else if (!pwPattern.test(password_B)) {
+            $(this).next(".error").text("비밀번호는 영문자와 숫자의 조합으로 6~12자여야 합니다.");
+          } else {
+            $(this).next(".error").text("");
+          }
+          $(this).removeClass("focused");
+        });
+
+        $("#confirm_pw").on("blur", function () {
+          const password_B = $("#user_pw").val();
+          const confirmPassword_B = $(this).val();
+          if (confirmPassword_B === "") {
+            $(this).next(".error").text("비밀번호 확인을 입력하세요.");
+          } else if (password_B !== confirmPassword_B) {
+            $(this).next(".error").text("비밀번호가 일치하지 않습니다.");
+          } else {
+            $(this).next(".error").text("");
+          }
+          $(this).removeClass("focused");
+        });
+
+        // 제출 버튼 클릭시
+        $("#signupForm").submit(function (e) {
+          e.preventDefault();
+          // 각 필드에서 입력 값을 가져오기
+          const userId = $("#user_id").val();
+          // console.log(userId);
+          const password = $("#user_pw").val();
+          const confirmPassword = $("#confirm_pw").val();
+          let isValid = true;
+          // 사용자 id 유효성 검사
+          if (userId === "") {
+            $("#user_id").next(".error").text("사용자 ID를 입력하세요.");
+            isValid = false;
+          } else if (!idPattern.test(userId)) {
+            $("#user_id").next(".error").text("사용자 ID는 영문자와 숫자로만 이루어진 4~12자여야 합니다.");
+            isValid = false;
+          }
+          // 사용자 password 유효성 검사
+          if (password === "") {
+            $("#user_pw").next(".error").text("사용자 password를 입력하세요.");
+            isValid = false;
+          } else if (!pwPattern.test(password)) {
+            $("#user_pw").next(".error").text("비밀번호는 영문자와 숫자의 조합으로 6~12자여야 합니다.");
+            isValid = false;
+          }
+          // 사용자 비밀번호 확인
+          if (confirmPassword === "") {
+            $("#confirm_pw").next(".error").text("비밀번호 확인을 입력하세요.");
+            isValid = false;
+          } else if (password !== confirmPassword) {
+            $("#confirm_pw").next(".error").text("비밀번호가 일치하지 않습니다.");
+            isValid = false;
+          }
+          // 유효성 검사가 모두 통과된 경우에만 회원가입 처리
+          if (isValid) {
+            alert(`${userId}님! 회원가입이 성공적으로 완료되었습니다. 로그인 페이지로 이동합니다. `);
+            window.location.href = "login.html";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

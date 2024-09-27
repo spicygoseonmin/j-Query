@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #2ecc71;
+        position: relative;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button id="slide-box">Slide Box</button>
+    <button id="animate-box">Animate Box</button>
+    <script>
+      $(document).ready(function () {
+        $("#slide-box").click(function () {
+          $(".box").slideDown(1000).delay(2000).slideUp(1000);
+        });
+        $("#animate-box").click(function () {
+          $(".box").show().animate({
+            width: "300px",
+            opacity : 0.5,
+            "margin-left" : "200px"
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>

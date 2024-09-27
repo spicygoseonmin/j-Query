@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        //  기본 문법
+        // $.ajax() 함수는 jQuery에서 AJAX 요청을 보내는데 사용되는 메서드
+        $.ajax({
+          // 1. 요청 url
+          // url: "https://example.com/data",
+          url: "data.json",
+          // 2.요청 메서드 (GET , POST , PUT, DELET)
+          type: "GET",
+          // 3.요청시 함께 보낼 데이터
+          data: { key1: "value1", key2: "value2" },
+          // 4. 응답 데이터의 형식 (json, xml, html 등등)
+          dataType: "json",
+          // 요청이 성공한 경우 실행될 콜백 함수
+          success: function (response) {
+            console.log("응답 데이터 : ", response);
+            
+          },
+          // 요청이 실패한 경우 실행될 콜백 함수
+          error: function (xhr, status, error) {
+            console.error("오류", status, error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

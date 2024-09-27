@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .highlight {
+        background-color: chartreuse;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <input type="text" id="text-input" placeholder="Press Enter" />
+    <script>
+      $(function () {
+        $("ul").on("click", "li", function () {
+          //  console.log(this);
+          $(this).toggleClass("highlight");
+        });
+        $(document).keydown(function (e) {
+          console.log(e.which);
+
+          if (e.which == 13) {
+            alert("enter");
+          }else{
+            alert("enter를 눌러주세요")
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

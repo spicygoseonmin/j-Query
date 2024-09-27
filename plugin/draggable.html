@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Plugin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .layer-popup {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        cursor: move;
+      }
+    </style>
+   
+  </head>
+  <body>
+    <div class="layer-popup">
+      <img src="images/pic_1.jpg" alt="이미지1" />
+    </div>
+    <script>
+      $(function () {
+        $(".layer-popup").draggable()
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        height: 100vh;
+        transition: all 0.2s;
+      }
+      h1 {
+        color: white;
+        text-align: center;
+      }
+      p {
+        color: white;
+        text-align: center;
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>마우스 움직일때 마다 배경 색상 변경</h1>
+    <p>X 좌표 : <span class="posX">0</span></p>
+    <p>Y 좌표 : <span class="posY">0</span></p>
+    <script>
+      $(function () {
+        $(document).on("mousemove", function (e) {
+          let x = e.pageX;
+          let y = e.pageY;
+          $(".posX").text(x);
+          $(".posY").text(y);
+          // 배경색 변경 코드
+          // 소수점 반올림
+          let red = Math.round((x / $(window).width()) * 255);
+          // console.log(red);
+          let blue = Math.round((y / $(window).height()) * 255);
+          let green = Math.round(((x + y) / ($(window).width() + $(window).height())) * 255);
+          $("body").css("background-color", `rgb(${red},${green},${blue})`);
+        });
+      });
+    </script>
+  </body>
+</html>

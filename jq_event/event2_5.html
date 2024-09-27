@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      .menuWrap_1 {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>$(this)</h2>
+    <ul class="menuWrap_1">
+      <li><a href="#">메뉴1</a></li>
+      <li><a href="#">메뉴2</a></li>
+      <li><a href="#">메뉴3</a></li>
+    </ul>
+    <h2>Index( )</h2>
+    <ul class="menuWrap_2">
+      <li><a href="#">메뉴4</a></li>
+      <li><a href="#">메뉴5</a></li>
+      <li><a href="#">메뉴6</a></li>
+    </ul>
+    <p class="idxNum"></p>
+    <script>
+      $(function () {
+        $(".menuWrap_1 a").on("click", function (e) {
+          e.preventDefault();
+          $(".menuWrap_1 a").css({ "background-color": "#fff" });
+          $(this).css({ "background-color": "#f0f" })
+        });
+        $(".menuWrap_2 a").on("click" , function(){
+          $(".menuWrap_2 a").css({ "background-color": "#0ff" })
+          const idx = $(".menuWrap_2 a").index(this)
+          console.log(idx);
+          $(".menuWrap_2 a").eq(idx).css({ "background-color": "#f0f" })
+          // idxNum선택하고 text()
+          $(".idxNum").text(idx)
+        })
+      });
+    </script>
+  </body>
+</html>

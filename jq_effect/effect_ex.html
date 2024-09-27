@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+      .active {
+        background-color: rgb(81, 0, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn">
+      <button class="append">append</button>
+      <button class="remove">remove</button>
+
+      <button class="fadein">fadein</button>
+      <button class="fadeout">fadeout</button>
+      <button t class="fadetoggle">fadetoggle</button>
+      <button class="show">show</button>
+      <button class="hide">hide</button>
+      <button class="toggle">toggle</button>
+      <button class="addclass">addclass</button>
+      <button class="removeclass">removeclass</button>
+      <button class="toggleclass">toggleclass</button>
+      <button class="slideup">slideup</button>
+      <button class="slidedown">slidedown</button>
+      <button class="slidetoggle">slidetoggle</button>
+    </div>
+    <div class="display"></div>
+    <script>
+      $(".append").click(() => {
+        $(".display").append(`<div class="box"></div>`);
+        $(".box").last().css("background-color", makeColor);
+      });
+      // 색상 랜덤으로 만드는 함수
+      function makeColor() {
+        const randomColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+        // console.log(randomColor);
+        return randomColor;
+      }
+      // 박스를 remove
+      $(".remove").click(function () {
+        $(".box").remove();
+      });
+      // show클릭하고 박스를 show
+      $(".show").click(() => {
+        $(".box").show();
+      });
+
+      // hide클릭하고 박스를 hide
+      $(".hide").click(() => {
+        $(".box").hide();
+      });
+      // toggle클릭하고 박스를 toggle
+      $(".toggle").click(() => {
+        $(".box").toggle();
+      });
+      // faidein(속도)
+      $(".fadein").click(() => {
+        $(".box").fadeIn(1000);
+      });
+      $(".fadeout").click(() => {
+        $(".box").fadeOut(1000);
+      });
+      $(".fadetoggle").click(() => {
+        $(".box").fadeToggle(1000);
+      });
+      $(".addclass").click(() => {
+        $(".box").addClass("active");
+      });
+      $(".removeclass").click(() => {
+        $(".box").removeClass("active");
+      });
+      $(".toggleclass").click(() => {
+        $(".box").toggleClass("active");
+      });
+      $(".slideup").click(() => {
+        // $(".box:odd").slideUp()
+        // $(".box:even").slideUp()
+        $(".box").slideUp();
+      });
+      $(".slidedown").click(() => {
+        // $(".box:odd").slideUp()
+        // $(".box:even").slideUp()
+        $(".box").slideDown();
+      });
+      $(".slidetoggle").click(() => {
+        $(".display div").each(function (index, item) {
+          // console.log(index );
+          // console.log(item );
+          $(item).text(index);
+        });
+        //  $(".box:odd").slideToggle()
+        $(".box:even").slideToggle();
+      });
+    </script>
+  </body>
+</html>

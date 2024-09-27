@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+  </ul>
+
+  <form>
+      <input type="text" placeholder="Optional Field">
+      <input type="text" required placeholder="Required Field">
+  </form>
+
+  <table border="1">
+      <tr><td>Row 1</td></tr>
+      <tr><td>Row 2</td></tr>
+      <tr><td>Row 3</td></tr>
+  </table>
+
+  <button id="apply-selectors">선택</button>
+    <script>
+      $(document).ready(function () {
+     $("#apply-selectors").on("click" , function(){
+      $("ul li:first-child").css("font-weight" , "bold")
+      $("table tr:odd").css("background-color" , "red")
+      $("input[required]").css("border" , "2px solid red")
+     })
+      });
+    </script>
+  </body>
+</html>

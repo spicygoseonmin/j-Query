@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>선택자</title>
+    <script src="jquery-1.10.2.min.js"></script>
+  </head>
+  <body>
+    <h1>제이쿼리</h1>
+    <h2>선택자</h2>
+    <h3>직접 선택자</h3>
+    <h3 id="tit">직접 선택자</h3>
+  <Script>
+    $(function(){
+      $("*").css("border" , "1px solid blue")
+      $("h1").css("color" , "red").css("font-size" , "20px")
+      $("h3").css("background-color","#ff0")
+      $("#tit").css({"color" : "#fff" ,"font-size" :  "15px" ,"background-color": "red" } )
+    })
+  </Script>
+  </body>
+</html>

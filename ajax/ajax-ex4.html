@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .img-wrap{
+            width: 300px;
+            margin: 0 auto;
+        }
+        .img-wrap > img{
+            width: 100%;
+        }
+        .person-info{
+            width: 400px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #727272;
+            border-radius: 10px
+        }
+    </style>
+  </head>
+  <body>
+    <button id="btnGetJson">Json 데이터 가져오기</button>
+    <div id="result">
+      <!-- json 데이터 출력 -->
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#btnGetJson").click(function () {
+          $.ajax({
+            url: "data4.json", //json 파일 경로
+            method: "GET", //요청방식
+            dataType: "json", //응답데이터 파일
+            success: function (data) {
+              //요청이 성공했을때 실행될 코드
+              // console.log(data);
+
+              data.forEach(function (item, index) {
+                // console.log(item);
+                // console.log(index);
+                let personInfo = `
+                <div class="person">
+                <button class="name">${item.name}</button>
+                  <div class="person-info">
+                    <p><strong>Person ${index + 1}</strong></p>
+                    <p>Name : ${item.name}</p>
+                    <div class= "img-wrap"><img src="${item.image}"></div>
+                    <p>personality : ${item.personality}</p>
+                  </div>
+                </div>        
+                `;
+                // console.log(personInfo)
+                $("#result").append(personInfo)
+              });
+            },
+            error: function (xhr, status, error) {
+              console.error(xhr);
+              console.error(status);
+              console.error(error);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

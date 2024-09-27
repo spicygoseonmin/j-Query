@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter 매서드 예제</title>
+   <script src="jquery-1.10.2.min.js"></script>
+  </head>
+  <body>
+    <div id="product-list">
+      <ul>
+        <li class="product" data-category="clothing">치마</li>
+        <li class="product" data-category="electronics">노트북</li>
+        <li class="product" data-category="clothing">티셔츠</li>
+        <li class="product" data-category="electronics">헤드폰</li>
+        <li class="product" data-category="books">소설책</li>
+        <li class="product" data-category="books">동화책</li>
+        <li class="product" data-category="books">만화책</li>
+        <li class="product" data-category="clothing">바지</li>
+      </ul>
+    </div>
+    <select id="category-filter">
+      <option value="all">전체 카테고리</option>
+      <option value="electronics">전자제품</option>
+      <option value="clothing">의류</option>
+      <option value="books">책</option>
+    </select>
+    <script>
+        $(document).ready(function(){
+            $("#category-filter").change(function(){
+                const selectCategory = $(this).val()
+                // console.log(selectCategory);
+                if(selectCategory  === "all"){
+                   $(".product").show()
+                }else{
+                    $(".product").hide().filter(`[data-category="${selectCategory}"]`).show()
+                }
+
+                
+            })
+        })
+        // $(function(){
+            
+        // })
+
+
+    </script>
+  </body>
+</html>

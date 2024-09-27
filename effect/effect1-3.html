@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <style>
+      p {
+        width: 110px;
+        text-align: center;
+      }
+      .txt1 {
+        background-color: aqua;
+      }
+      .txt2 {
+        background-color: pink;
+      }
+      .txt3 {
+        background-color: orange;
+      }
+      .txt4 {
+        background-color: green;
+      }
+      .txt5 {
+        background-color: gold;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="txt1">효과1</p>
+    <p class="txt2">
+      효과2<br />
+      delay(3000)
+    </p>
+
+    <p><button class="btn1">50px 전진</button></p>
+    <p class="txt3">효과3</p>
+    <p class="txt4">효과4<br />stop( )</p>
+    <p class="txt5">효과5<br />stop(true, true)</p>
+    <script>
+      $(function () {
+        $(".txt1").animate({
+            marginLeft:"300px"
+        }, 1000)
+        $(".txt2").delay(3000).animate({
+            marginLeft:"300px"
+        }, 1000)
+        $(".btn1").on("click", function(){
+            $(".txt3").animate({
+                marginLeft : "+=50px"
+            }, 800)
+            $(".txt4").animate({
+                marginLeft : "+=50px"
+            }, 800)
+            $(".txt4").stop()
+            //stop(true, true)
+            //첫번쨰 매게 변수 : 현재 실행중인  에니메이션을 
+            //대기중인 모든 애니메이샨 큐를 제거
+            //실행될 예정이었던 애니메이션도 모두 정지된다
+            $(".txt5").stop(true, true)
+        })
+      });
+    </script>
+  </body>
+</html>

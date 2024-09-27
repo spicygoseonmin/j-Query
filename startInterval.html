@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        display: block;
+        position: relative;
+        /* width: 50%; */
+        /* height: 500px; */
+        padding: 50px;
+        margin: 200px auto;
+      }
+      .clock {
+        width: 300px;
+        height: 300px;
+        background-color: #ccc;
+        position: relative;
+        margin: 0 auto;
+        border-radius: 150px;
+      }
+      .niddle {
+        height: 280px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -14px;
+        margin-top: -140px;
+        transform: rotate(0deg);
+        filter: drop-shadow(2px 2px 5px #000);
+        transition: transform 0.2s;
+        z-index: 2;
+      }
+      /* .niddle > .top {
+        height: 50%;
+      } */
+      .niddle:last-child {
+        filter: grayscale(1);
+        z-index: 1;
+      }
+      #stop {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #play {
+        display: none;
+        /* 처음에는 재생 버튼 숨김 */
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        /* rotate: 5deg; */
+      }
+      button{
+        padding:5px 10px;
+        border: 0;
+        /* outline: none; */
+      
+      }
+      .p{
+        
+        position: relative;
+       
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="clock">
+        <div class="niddle">
+          <div class="top">
+            <img src="images/niddle.png" alt="침" />
+          </div>
+          <div class="bottom"></div>
+        </div>
+        <div class="niddle">
+          <div class="top">
+            <img src="images/niddle.png" alt="침" />
+          </div>
+          <div class="bottom"></div>
+        </div>
+      </div>
+      <!-- 정지 버튼과 재생 버튼 추가 -->
+      <div class="p">
+        <button id="stop">정 지</button>
+        <button id="play">재 생</button>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        let deg = 0;
+        let deg2 = 0;
+        let interval;
+        let interval2;
+        let isPlaying = true; //초기 상태는 재생
+        // 시작하는 함수
+        function startIntervals() {
+          interval = setInterval(function () {
+            deg += 6;
+            // console.log(deg);
+            // transform: rotate(0deg);
+            $(".niddle:first-child").css("transform", "rotate(" + deg + "deg)");
+          }, 100);
+          interval2 = setInterval(function () {
+            if (deg % 360 == 0 && deg != 0) {
+              deg2 += 6;
+              //  console.log(deg2);
+              $(".niddle:last-child").css("transform", "rotate(" + deg2 + "deg)");
+            }
+          }, 50);
+        }
+        // 초기상태(로드시)
+        if (isPlaying) {
+          startIntervals();
+          // 버튼표시
+          $("#stop").show();
+          $("#play").hide();
+        } else {
+          $("#stop").hide();
+          $("#play").show();
+        }
+        // 정지 버튼
+        $("#stop").click(function () {
+          clearInterval(interval);
+          clearInterval(interval2);
+          isPlaying = false;
+          // 버튼표시
+          $("#stop").hide();
+          $("#play").show();
+        });
+        // 재생버튼
+        // 1.재생버튼을 클릭
+        $("#play").click(function () {
+          // 2.startIntervals();
+          startIntervals();
+          isPlaying = true;
+          // 버튼표시
+          $("#stop").show();
+          $("#play").hide();
+        });
+      });
+    </script>
+  </body>
+</html>

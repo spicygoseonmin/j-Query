@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      .menuWrap_1 {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+        <p><button class="btn_1">버튼1</button></p>
+     </div>
+     <p>
+        <button class="del_1">버튼1 이벤트 해지</button> 
+        <button class="del_2">버튼2 이벤트 해지</button>
+     </p>
+    <script>
+      $(function () {
+        $(".btn_1").on("mouseover", function(){
+            alert("안녕")
+        })
+        $(document).on("mouseover", ".btn_2", function(){
+            alert("환영")
+        })
+        const btn2 = $(`<p><button class="btn_2">버튼2</button></p>`)
+        // console.log(btn2)
+        $("#wrap").append(btn2)
+        $(".del_1").on("click", function(){
+            $(".btn_1").off()
+        })
+        $(".del_2").on("click", function(){
+            $(document).off("mouseover",".btn_2")
+        })
+      });
+    </script>
+  </body>
+</html>

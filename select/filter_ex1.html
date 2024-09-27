@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter 매서드 예제</title>
+    <script src="jquery-1.10.2.min.js"></script>
+  </head>
+  <body>
+    <h2>상품리스트</h2>
+    <ul id="product-list">
+      <li class="product" data-price="05">상품 A - &#92;50</li>
+      <li class="product" data-price="100">상품 B - &#92;100</li>
+      <li class="product" data-price="150">상품 C - &#92;150</li>
+      <li class="product" data-price="200">상품 D - &#92;200</li>
+    </ul>
+    <input type="number" id="price-filter" placeholder="최대 가격을 입력하세요." />
+    <script>
+      $(function () {
+        $("#price-filter").keyup(function () {
+          const maxPrice = $(this).val();
+          // console.log(maxPrice);
+          if (maxPrice === "") {
+            $(".product").show();
+          } else {
+            $(".product")
+              .hide()
+              .filter(function () {
+                // parseInt() 문자열을 숫자로 바꾸는 메서드
+                return parseInt($(this).data("price")) <= maxPrice;
+              })
+              .show();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

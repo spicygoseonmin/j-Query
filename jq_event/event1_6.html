@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      body{
+        width: 5000px;
+        height: 10000px;
+      }
+      #wrap{
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        background-color: #f39b9b;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <p>scrollTop: <span class="top">0</span>px</p>
+      <p>scrollLeft: <span class="left">0</span>px</p>
+    </div>
+    <script>
+      $(function () {
+        $(window).on("scroll",function(){
+          // alert("확인")
+          let sc_top = $(this).scrollTop()
+          // console.log(sc_top);
+          let sc_left = $(this).scrollLeft()
+          // console.log(sc_left);
+          // 1. top을 선택하고 text(sc_top)
+          // 2 . left을 선택하고 text(sc_left)
+          $(".top").text(sc_top)
+          $(".left").text(sc_left)
+          
+        })
+      });
+    </script>
+  </body>
+</html>

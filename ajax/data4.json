@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Alice",
+        "image": "image/alice.png",
+        "personality": "호기심이 많고 모험심이 강함"
+    },
+    {
+        "name": "Bob",
+        "image": "image/bob.png",
+        "personality": "침착하고 논리적임"
+    },
+    {
+        "name": "Charlie",
+        "image": "image/charlie.png",
+        "personality": "활기차고 외향적임"
+    },
+    {
+        "name": "David",
+        "image": "image/david.png",
+        "personality": "사려 깊고 내성적임"
+    },
+    {
+        "name": "Emily",
+        "image": "image/emily.png",
+        "personality": "창의적이고 예술적임"
+    }
+]

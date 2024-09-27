@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      #welcomeMessage{
+        margin-top: 50px;
+        display: none;
+      }
+      #userGreeting{
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>로그인</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">사용자 이름:</label>
+          <input type="text" class="form-control" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호:</label>
+          <input type="password" class="form-control" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-primary">로그인</button>
+      </form>
+      <div id="welcomeMessage">
+        <h3>환영합니다!</h3>
+        <p id="userGreeting"></p>
+      </div>
+    </div>
+    <script>
+        $(function(){
+            $("#loginForm").submit(function(e){
+                e.preventDefault();
+                // 사용자 이름과 비밀번호를 가져온다
+                const userId = $("#username").val()
+                const userPw = $("#password").val()
+
+                if(userId && userPw){
+                    $("#welcomeMessage").show();
+                    $("#userGreeting").text(`${userId}님 회원 가입을 축하드려요!`);
+                    // 입력 필드를 초기화 시킨다
+                    
+                    $("#username").val("")
+                    $("#password").val("")
+                }else{
+                    alert("아이디랑 비밀번호를 입력하세요")
+                }
+            })
+        })
+    </script>
+  </body>
+</html>

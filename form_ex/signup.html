@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      .focused {
+        border: 2px solid #007bff;
+        outline: none;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <form id="signupForm">
+      <p>
+        <label for="user_id">사용자 ID</label>
+        <input type="text" name="user_id" id="user_id" />
+      </p>
+      <p>
+        <label for="user_pw">비밀번호</label>
+        <input type="password" name="user_pw" id="user_pw" />
+      </p>
+      <p>
+        <label for="confirm_pw">비밀번호 확인</label>
+        <input type="password" name="confirm_pw" id="confirm_pw" />
+      </p>
+      <button type="submit">회원가입</button>
+    </form>
+    <script>
+    
+      $("#user_id , #user_pw ,#confirm_pw").on("focus", function () {
+        $(this).addClass("focused");
+      });
+      $("#user_id , #user_pw ,#confirm_pw").on("blur", function () {
+        $(this).removeClass("focused");
+      });
+      // 회원가입 폼 제출 이벤트 처리
+      $("#signupForm").submit(function (e) {
+        e.preventDefault();
+        // 각 필드에서 입력 값을 가져오기
+        const userId = $("#user_id").val();
+        // console.log(userId);
+        const password = $("#user_pw").val();
+        const confirmPassword = $("#confirm_pw").val();
+        // 간단한 유효성 검사 -  각 입력 필드가 비어있는지 확인
+        if (!userId || !password || !confirmPassword) {
+          alert("모든 필드를 입력해주세요.");
+          return //유효성검사가 실패하면 중단
+        }
+        // 비밀번호 일치 여부 확인
+        if(password !== confirmPassword){
+            alert("비밀번호가 일치하지 않습니다.")
+            return //유효성검사가 실패하면 중단
+        }
+        alert("회원가입이 성공적으로 완료 되었습니다. 로그인페이지로 이동합니다.")
+        // 로그인 페이지로 이동
+        window.location.href = "login.html"
+      });
+    </script>
+  </body>
+</html>

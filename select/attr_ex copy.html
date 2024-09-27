@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      #myImage {
+        border: 2px solid transparent;
+      }
+      #myImage.borde-active{
+        border: 2px solid #333 ;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><strong>이미지 속성 조작</strong></h1>
+    <section id="sec_1">
+      <h2>이미지 속성 변경</h2>
+      <p>
+        <img id="myImage" src="images/math_img_1.jpg" alt="바위"  />
+      </p>
+      <button id="changeImage">이미지 변경</button>
+      <button id="toggleBorder">테두리 토글</button>
+    </section>
+    <script>
+      $(function () {
+        // 이미지 변경
+        $("#changeImage").click(function () {
+          const img = $("#myImage");
+          const imgSrc = img.attr("src");
+          // img.attr({
+          //     src: imgSrc.replace("1.jpg" , "2.jpg"),
+          //     alt : "가위",
+          //     width : 400
+          // })
+          if (imgSrc === "images/math_img_1.jpg") {
+            img.attr({
+              src: "images/math_img_2.jpg",
+              alt: "가위",
+              width: 400,
+            });
+          } else {
+            img.attr({
+              src: "images/math_img_1.jpg",
+              alt: "바위",
+              width: 200,
+            });
+          }
+        });
+        // 테두리 변경
+        $("#toggleBorder").click(function () {
+          $("#myImage").toggleClass("borde-active")
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>each_map_filter 메서드 예제</title>
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Cherry</li>
+      <li>Blueberry</li>
+      
+    </ul>
+    <script>
+      $(function () {
+        // each_map_filter메서드는 모두 배열이나
+        // 객체를 순회하거나 필터링하는데 사용
+        // each()메서드
+        // 반환값이 없습니다.
+        // 콜백함수의 반환값이 false이면 루프를 중단한다.
+        $("#fruits li").each(function (index, element) {
+          //   console.log(index, element);
+        });
+        // map()메서드
+        // 각 콜백함수의 반환값으로 새 배열을 생성
+        let fruitName = $("#fruits li")
+          .map(function (index, element) {
+            // console.log(element);
+
+            return $(element).text();
+          })
+          .get();
+        // console.log(fruitName);
+        // filter()메서드
+        // 객체의 요소중에서 지정한 조건을 만족하는 요소들만 객체 반환한다.
+        let filteredFruits = $("#fruits li").filter(function (index, element) {
+          return $(element).text().startsWith("B")
+        });
+        // console.log(filteredFruits);
+        // 필터링된 요소만 스타일 적용
+        filteredFruits.css("color" , "red")
+        // console.log(filteredFruits.text());
+        let bFruitName = filteredFruits.map(function(index, element){
+            return $(element).text()
+r
+        }).get()
+        // 쉼표로 구분하여 문자열로 출력
+        console.log(bFruitName.join(" , "));
+        
+      });
+    </script>
+  </body>
+</html>

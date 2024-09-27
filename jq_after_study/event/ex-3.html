@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="my-element">trigger이벤트</div>
+    <a href="https://www.example.com">Click Me</a>
+    <a href="#" id="link">링크</a>
+    <script>
+      // $(document).ready(function(){
+
+      // })
+      $(function () {
+        $("#my-element").on("customEvent", function (event, message) {
+          console.log("customEvent 메세지 :", message);
+          console.log("customEvent 이벤트 :", event);
+        });
+        $("#my-element").trigger("customEvent", ["안녕!!"]);
+        $("a").click(function (e) {
+          e.preventDefault();
+          console.log(e.target.href);
+        });
+        const href = $("#link").attr("href")
+        // console.log(href);
+        $("#link").attr("href" , "https://www.example.com")
+        
+      });
+    </script>
+  </body>
+</html>

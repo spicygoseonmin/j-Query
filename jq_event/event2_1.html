@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style></style>
+  </head>
+  <body>
+   
+    <p><button id="btn1">버튼1</button></p>
+    <p><button id="btn2">버튼2</button></p>
+    <p class="txt"></p>
+    <script>
+      $(function () {
+        $("#btn1").data({"text" : "javascript"}).on({
+          "mouseover" : overFnc,
+          "mouseout" : outFnc
+        })
+        $("#btn2").data({"text" : "하경미"}).on({
+          "mouseover focus" : overFnc,
+          "mouseout blur" : outFnc
+        })
+        function overFnc(){
+          $(".txt").text($(this).data("text"))
+        }
+        function outFnc(){
+          $(".txt").text("")
+        }
+
+      });
+    </script>
+  </body>
+</html>

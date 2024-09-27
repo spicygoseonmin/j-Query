@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+    
+    </style>
+  </head>
+  <body>
+    <h1>focus / blur</h1>
+    <form action="#">
+      <p>
+        <label for="user_id_1">ID</label>
+        <input type="text" name="user_id_1" id="user_id_1" />
+      </p>
+      <p>
+        <label for="user_pw_1">PW</label>
+        <input type="password" name="user_pw_1" id="user_pw_1" />
+      </p>
+    </form>
+    <script>
+      $(function () {
+       $("#user_id_1 , #user_pw_1").on("focus",function(){
+        // console.log($(this));
+        $(this).css({"background-color" :"pink"})
+         
+       })
+       $("#user_id_1 , #user_pw_1").on("blur",function(){
+        $(this).css({"background-color" :"#fff"})
+       })
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #e74c3c;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button id="queue-animation">Queue Animation</button>
+    <script>
+      $(document).ready(function () {
+        //  queue() 여러 애니메이션과 작업을 순서대로 실행할수 있게하는 기능
+        $("#queue-animation").click(function(){
+          $(".box")
+          .animate(
+            {
+              left: "100px",
+            },
+            1000
+          )
+          .queue(function (next) {
+            $(this).css("background-color", "blue");
+            next();
+          })
+          .animate({ left: "0px" }, 1000)
+          .queue(function (next) {
+            $(this).css("background-color", "yellow");
+            next();
+          });
+        })
+      
+      
+
+        
+      });
+    </script>
+  </body>
+</html>

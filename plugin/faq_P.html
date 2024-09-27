@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      body {
+        font: 14px "Malgun Gothic", "맑은고딕", sans-serif;
+        color: #555;
+      }
+      h1 {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
+      .faq {
+        margin: 20px 0;
+      }
+      .faq button {
+        width: 100%;
+        text-align: left;
+        padding: 5px;
+        background: none;
+        border: none;
+        border-bottom: 1px solid #000;
+        cursor: pointer;
+      }
+      .cont {
+        padding: 10px;
+        background-color: #efefef;
+      }
+      .faq li > div {
+        display: none;
+      }
+    </style>
+    <script>
+      $(function () {
+        // jquery플러그인을 확장하는 방법으로 새로운 기능 추가
+        $.fn.extend({
+          faq: function () {
+            const ts = $(this);
+            $.each(ts, function (i, o) {
+              // console.log(i,o);
+              $("button", o).on("click", function () {
+                // 만약 현재 클릭된 항목의 다음 요소가 숨겨져 있으면
+                if ($(this).parent().next().is(":hidden")) {
+                  $("li > div:visible" , o).hide();
+                  $(this).parent().next().show();
+                } else {
+                  $("li > div:visible", o).hide();
+                }
+              });
+            });
+          },
+        });
+        // faq()메서드를 .faq 클래스가 있는 요소에 대해 호출
+        $(".faq").faq();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>질문 제목1</h1>
+    <div class="faq">
+      <ul>
+        <li>
+          <p><button>Q1. 자주 묻는 질문 내용?</button></p>
+          <div>
+            <div class="cont">답변 내용1</div>
+          </div>
+        </li>
+        <li>
+          <p><button>Q2. 자주 묻는 질문 내용?</button></p>
+          <div>
+            <div class="cont">답변 내용2</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <h1>질문 제목2</h1>
+    <div class="faq">
+      <ul>
+        <li>
+          <p><button>Q1. 자주 묻는 질문 내용?</button></p>
+          <div>
+            <div class="cont">답변 내용1</div>
+          </div>
+        </li>
+        <li>
+          <p><button>Q2. 자주 묻는 질문 내용?</button></p>
+          <div>
+            <div class="cont">답변 내용2</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체 조작 및 생성</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <style>
+      a {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><strong>객체 조작 및 생성</strong></h1>
+    <section id="sec_1">
+      <h2><em>html()</em></h2>
+      <p>내용1</p>
+      <!-- h4로 본인 이름 추가 -->
+      <h4></h4>
+    </section>
+    <section id="sec_2">
+      <h2><em>텍스트()</em></h2>
+
+      <p>내용2</p>
+    </section>
+    <script>
+      $(function () {
+        const result_1 = $("#sec_1").html();
+        //  console.log(result_1);
+        $("#sec_1 p").html(`<a href="https://www.naver.com/">네이버</a>`);
+        // $("#sec_1").html(`<h4>하경미</h4>`)
+        $("#sec_1 h4").html(`하경미`);
+        const result_2 = $("#sec_2").text();
+        console.log(result_2);
+        $("#sec_2 h2").text("하경미")
+        $("#sec_2 p").text("하경미")
+
+      });
+    </script>
+  </body>
+</html>

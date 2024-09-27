@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="btnGetJson">json 데이터 가져오기</button>
+    <div id="result">
+      <!-- json 데이터 출력 -->
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#btnGetJson").click(function () {
+          $.ajax({
+            url: "data.json", // json파일 경로
+            method: "GET", //요청방식
+            dataType: "json", //  응답 데이터 타입
+            success: function (data) {
+              // 요청이 성공했을때 실행할 코드
+              console.log(data);
+              data.forEach(function (item, index) {
+                // console.log(index);
+                // console.log(item);
+                let personInfo = `
+                    <div class="person">
+                     <button class="name">${item.name}</button>
+                     <div class="person-info">
+                       <p><strong>Person ${index + 1}</strong></p>
+                       <p>Name : ${item.name} </p>
+                       <p>Age : ${item.age} </p>
+                       <p>City : ${item.city} </p>
+                     </div>
+                    </div>
+                    `;
+                // console.log(personInfo);
+                $("#result").append(personInfo);
+              });
+            },
+            error: function (xhr, status, error) {
+              console.error(xhr);
+              console.error(status);
+              console.error(error);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

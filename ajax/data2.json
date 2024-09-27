@@ -1,0 +1,23 @@
+[
+  {
+    "message": "전송이 성공적으로 완료되었습니다.",
+    "userData": {
+      "name": "Ha",
+      "email": "Ha@example.com"
+    }
+  },
+  {
+    "message": "전송이 성공적으로 완료되었습니다.",
+    "userData": {
+      "name": "John Doe",
+      "email": "johndoe@example.com"
+    }
+  },
+  {
+    "message": "전송이 성공적으로 완료되었습니다.",
+    "userData": {
+      "name": "Kim",
+      "email": "Kim@example.com"
+    }
+  }
+]

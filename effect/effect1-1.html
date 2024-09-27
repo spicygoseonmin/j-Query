@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <style>
+        .content{
+            background-color: chartreuse;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <button class="btn1">닫기</button>
+        <button class="btn2">열기</button>
+    </p>
+    <p>
+        <button class="btn3">btn3</button>
+    </p>
+    <p>
+        <button class="btn4">닫기</button>
+        <button class="btn5">열기</button>
+    </p>
+    <div class="box">
+        <div class="content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident placeat blanditiis suscipit enim numquam cupiditate laborum ratione nostrum unde quidem atque libero qui id adipisci, est facere aspernatur rem fuga.
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".btn2").hide()
+            $(".btn1").on("click", function(){
+                $(".box").slideUp(500 , "linear"),
+                    $(".btn2").show()
+                    $(".btn1").hide()
+            });
+            $(".btn2").on("click", function(){
+                $(".box").fadeIn(500 , "swing"),
+                    $(".btn1").show()
+                    $(".btn2").hide()
+            });
+            $(".btn3").on("click", function(){
+                $(".box").slideToggle(500)
+            });
+            $(".btn4").on("click",function(){
+                //fadeTo("속도", 투명도)
+                $(".box").fadeTo("fast", 0)
+            });
+            $(".btn5").on("click",function(){
+                //fadeTo("속도", 투명도)
+                $(".box").fadeTo("fast", 1)
+            });
+        });
+    </script>
+</body>
+</html>

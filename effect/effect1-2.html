@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <style>
+        .txt1{
+            opacity: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <p><button class="btn1">버튼1</button></p>
+    <span class="txt1">"500px" 이동</span>
+    <p><button class="btn2">버튼2</button></p>
+    <span class="txt2">"50px"씩 이동</span>
+    <script>
+      $(function () {
+        $(".btn1").on("click", function () {
+          $(".txt1").animate({
+            marginLeft: "500px",
+            opacity: "1",
+          }, 200, "linear", function(){
+            // alert("모션이 완료되었습니다")
+            $(this).css("color","red")
+          });
+        });
+        $(".btn2").on("click", function () {
+          $(".txt2").animate({
+            marginLeft: "+=50px",
+          }, 200, "linear")
+        });
+      });
+    </script>
+  </body>
+</html>
